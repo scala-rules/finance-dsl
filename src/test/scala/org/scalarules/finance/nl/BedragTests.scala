@@ -84,19 +84,20 @@ class BedragTest extends FlatSpec with Matchers {
 
 class BedragImplicitsTest extends FlatSpec with Matchers {
 
-  val x = 5.euro
-  val y = 2.euro
+  val vijfEuro = 5.euro
+  val tweeEuro = 2.euro
+  val vijfCent = Bedrag(BigDecimal(0.05))
 
   it should "construct a Bedrag from an Int with 'euro'" in {
-    5.euro should be(x)
+    5.euro should be(vijfEuro)
   }
 
   it should "construct a Bedrag from a BigDecimal with 'euro'" in {
-    BigDecimal(5).euro should be(x)
+    BigDecimal(5).euro should be(vijfEuro)
   }
 
   it should "construct a Bedrag from a String with 'euro'" in {
-    "5".euro should be(x)
+    "5".euro should be(vijfEuro)
   }
 
   it should "not compile when constructing a Bedrag from a Double with 'euro'" in {
@@ -105,6 +106,26 @@ class BedragImplicitsTest extends FlatSpec with Matchers {
 
   it should "not compile when constructing a Bedrag from a Float with 'euro'" in {
     "5.0f.euro" shouldNot compile
+  }
+
+  it should "construct a Bedrag from an Int with 'centen'" in {
+    5.centen should be(vijfCent)
+  }
+
+  it should "construct a Bedrag from a BigDecimal with 'centen'" in {
+    BigDecimal(5).centen should be(vijfCent)
+  }
+
+  it should "construct a Bedrag from a String with 'centen'" in {
+    "5".centen should be(vijfCent)
+  }
+
+  it should "not compile when constructing a Bedrag from a Double with 'centen'" in {
+    "5.0.centen" shouldNot compile
+  }
+
+  it should "not compile when constructing a Bedrag from a Float with 'centen'" in {
+    "5.0f.centen" shouldNot compile
   }
 
   it should "do commutative multiplication with Int" in {
@@ -126,7 +147,7 @@ class BedragImplicitsTest extends FlatSpec with Matchers {
   }
 
   it should "have an ordering" in {
-    x > y should be(true)
+    vijfEuro > tweeEuro should be(true)
   }
 
 }
