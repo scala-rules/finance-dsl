@@ -108,24 +108,24 @@ class BedragImplicitsTest extends FlatSpec with Matchers {
     "5.0f.euro" shouldNot compile
   }
 
-  it should "construct a Bedrag from an Int with 'centen'" in {
-    5.centen should be(vijfCent)
+  it should "construct a Bedrag from an Int with 'cent'" in {
+    5.cent should be(vijfCent)
   }
 
-  it should "construct a Bedrag from a BigDecimal with 'centen'" in {
-    BigDecimal(5).centen should be(vijfCent)
+  it should "construct a Bedrag from a BigDecimal with 'cent'" in {
+    BigDecimal(5).cent should be(vijfCent)
   }
 
-  it should "construct a Bedrag from a String with 'centen'" in {
-    "5".centen should be(vijfCent)
+  it should "construct a Bedrag from a String with 'cent'" in {
+    "5".cent should be(vijfCent)
   }
 
-  it should "not compile when constructing a Bedrag from a Double with 'centen'" in {
-    "5.0.centen" shouldNot compile
+  it should "not compile when constructing a Bedrag from a Double with 'cent'" in {
+    "5.0.cent" shouldNot compile
   }
 
-  it should "not compile when constructing a Bedrag from a Float with 'centen'" in {
-    "5.0f.centen" shouldNot compile
+  it should "not compile when constructing a Bedrag from a Float with 'cent'" in {
+    "5.0f.cent" shouldNot compile
   }
 
   it should "do commutative multiplication with Int" in {

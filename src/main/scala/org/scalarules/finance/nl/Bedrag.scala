@@ -58,7 +58,7 @@ trait BedragImplicits {
     def euro: Bedrag = Bedrag(value)
 
     /** Maakt een Bedrag. */
-    def centen: Bedrag = Bedrag(value * Bedrag.centNaarEuroFactor);
+    def cent: Bedrag = Bedrag(value * Bedrag.centNaarEuroFactor)
 
     /** Returnt het product van deze BigDecimal en Bedrag b. */
     def *(b: Bedrag): Bedrag = b * value
@@ -72,7 +72,7 @@ trait BedragImplicits {
     /** Maakt een Bedrag. */
     def euro: Bedrag = Bedrag(BigDecimal(value))
 
-    def centen: Bedrag = Bedrag(BigDecimal(value) * Bedrag.centNaarEuroFactor)
+    def cent: Bedrag = Bedrag(BigDecimal(value) * Bedrag.centNaarEuroFactor)
   }
 
   /** Zorgt ervoor dat zaken als "sum" gemakkelijk kunnen worden berekend op verzamelingen van Bedrag. */
