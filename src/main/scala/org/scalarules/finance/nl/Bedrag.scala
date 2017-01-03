@@ -49,12 +49,16 @@ case class Bedrag private[finance] (waarde: BigDecimal) {
 
 object Bedrag {
   private val nederland = new Locale("nl", "NL")
+  private[nl] val centNaarEuroFactor = BigDecimal(0.01)
 }
 
 trait BedragImplicits {
   abstract class ToBedrag(value: BigDecimal) {
     /** Maakt een Bedrag. */
     def euro: Bedrag = Bedrag(value)
+
+    /** Maakt een Bedrag. */
+    def cent: Bedrag = Bedrag(value * Bedrag.centNaarEuroFactor)
 
     /** Returnt het product van deze BigDecimal en Bedrag b. */
     def *(b: Bedrag): Bedrag = b * value
@@ -67,6 +71,8 @@ trait BedragImplicits {
   implicit class StringToBedrag(value: String){
     /** Maakt een Bedrag. */
     def euro: Bedrag = Bedrag(BigDecimal(value))
+
+    def cent: Bedrag = Bedrag(BigDecimal(value) * Bedrag.centNaarEuroFactor)
   }
 
   /** Zorgt ervoor dat zaken als "sum" gemakkelijk kunnen worden berekend op verzamelingen van Bedrag. */
