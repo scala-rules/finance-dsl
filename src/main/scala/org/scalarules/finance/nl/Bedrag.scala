@@ -65,6 +65,7 @@ trait BedragImplicits {
   }
   implicit class BigDecimalToBedrag(value: BigDecimal) extends ToBedrag(value)
   implicit class IntToBedrag(value: Int) extends ToBedrag(value)
+  implicit class LongToBedrag(value: Long) extends ToBedrag(value)
 
   /** Het is niet mogelijk om een String te vermenigvuldigen met een Bedrag
     * Dit conflicteert met String's eigen * functie en is dus niet geimplementeerd*/
