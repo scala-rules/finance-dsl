@@ -92,6 +92,10 @@ class BedragImplicitsTest extends FlatSpec with Matchers {
     5.euro should be(vijfEuro)
   }
 
+  it should "construct a Bedrag from a Long with 'euro'" in {
+    5L.euro should be(vijfEuro)
+  }
+
   it should "construct a Bedrag from a BigDecimal with 'euro'" in {
     BigDecimal(5).euro should be(vijfEuro)
   }
@@ -110,6 +114,10 @@ class BedragImplicitsTest extends FlatSpec with Matchers {
 
   it should "construct a Bedrag from an Int with 'cent'" in {
     5.cent should be(vijfCent)
+  }
+
+  it should "construct a Bedrag from a Long with 'cent'" in {
+    5L.cent should be(vijfCent)
   }
 
   it should "construct a Bedrag from a BigDecimal with 'cent'" in {
