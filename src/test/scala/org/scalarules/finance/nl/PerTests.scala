@@ -47,9 +47,7 @@ class PerTest extends FlatSpec with Matchers {
   }
 
   it should "not do arithmetic on a non-number" in {
-    val a = "hello" per Maand
-    val b = "world" per Maand
-    "a + b" shouldNot typeCheck
+    """("hello" per Maand) + ("world" per Maand)""" shouldNot typeCheck
   }
 
   it should "not mix Periodes" in {

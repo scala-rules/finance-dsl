@@ -6,8 +6,9 @@ lazy val commonSettings = Seq(
   organization := "org.scala-rules",
   organizationHomepage := Some(url("https://github.com/scala-rules")),
   homepage := Some(url("https://github.com/scala-rules/finance-dsl")),
-  version := "0.1.3-SNAPSHOT",
-  scalaVersion := "2.11.8",
+  version := "0.1.4-SNAPSHOT",
+  scalaVersion := "2.11.11",
+  crossScalaVersions := Seq("2.11.11", "2.12.3"),
   scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-Xlint", "-Xfatal-warnings")
 ) ++ staticAnalysisSettings ++ publishSettings
 
@@ -25,11 +26,9 @@ lazy val financeDslRoot = (project in file("."))
 
 // *** Dependencies ***
 
-lazy val scalaTestVersion = "2.2.5"
-
 lazy val dependencies = Seq(
-  "org.scalatest" %% "scalatest" % scalaTestVersion % Test,
-  "org.scalacheck" %% "scalacheck" % "1.12.5" % Test
+  "org.scalatest" %% "scalatest" % "3.0.4" % Test,
+  "org.scalacheck" %% "scalacheck" % "1.13.5" % Test
 )
 
 // *** Static analysis ***
@@ -50,9 +49,8 @@ lazy val staticAnalysisSettings = {
   )
 }
 
-addCommandAlias("verify", ";compileScalastyle;testScalastyle;coverage;test;coverageReport;coverageAggregate")
-addCommandAlias("verify", ";testScalastyle;test")
-addCommandAlias("release", ";clean;compile;publishSigned")
+addCommandAlias("verify", ";compileScalastyle;testScalastyle;coverage;+test;coverageReport")
+addCommandAlias("release", ";clean;+compile;+publishSigned")
 
 
 // *** Publishing ***

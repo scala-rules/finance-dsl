@@ -149,9 +149,7 @@ class BedragImplicitsTest extends FlatSpec with Matchers {
   }
 
   it should "not compile when multiplying a String with a Bedrag" in {
-    val x = "10"
-    val a = 2.euro
-    "(x * a)" shouldNot compile
+    """("10" * 2.euro)""" shouldNot compile
   }
 
   it should "have an ordering" in {
